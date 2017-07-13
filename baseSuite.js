@@ -1,8 +1,19 @@
-// exports.BaseSuite = function(name){
-// 	this.name = name;
-// 	console.log("constructing baseSuite");
-// }
+"use strict";
+class BaseSuite{
+	constructor(name){
+		this.name = name;
+		this.tests = [];
+	}
 
-exports.BaseSuite.prototype.print = function(){
-		console.log("Hello from baseSuite");
+	addTest(test){
+		this.tests.push(test);
+	}
+
+	executeTests(){
+		for(var test of this.tests){
+			test.execute(this.name);
+		}
+	}
 }
+
+module.exports = BaseSuite;
